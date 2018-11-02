@@ -1,0 +1,57 @@
+<p id="notice"><%= notice %></p>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">Blogs</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <%= link_to 'Home', blogs_path%> 
+      </li>
+    </ul>
+     <ul class="navbar-nav navbar-left">
+      <li class="nav-item active">
+        <%= link_to 'New Blog', new_blog_path %>
+      </li>
+    </ul>
+
+  </div>
+</nav>
+
+<div class="jumbotron">
+  <h1 class="display-4">Welcome To Rails Blog</h1>
+    <p class="lead">This Blog is made using Rails with Postgre DB</p>
+      <hr class="my-4">
+    <p class="lead">
+    <a class="btn btn-primary btn-lg" href="https://rubyonrails.org/" role="button">Learn more</a>
+    </p>
+</div>
+
+<table class='table table-hover'>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Content</th>
+      <th colspan="3">Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @blogs.each do |blog| %>
+      <tr>
+        <td><%= blog.title %></td>
+        <td><%= blog.content %></td>
+        <td><%= link_to 'Show', blog %></td>
+        <td><%= link_to 'Edit', edit_blog_path(blog) %></td>
+        <td><%= link_to 'Destroy', blog, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+
